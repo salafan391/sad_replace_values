@@ -1,6 +1,18 @@
-import pandas as pd
 import os
+from functions import read_csv
 
 
-path_name = os.path.join('ZAQG_FI_QDM_SMALL_BRANCH_JB044.csv')
-sab_df = pd.read_csv(path_name)
+
+INPUT_DIR = 'input_dir'
+path_names = []
+for path in os.listdir(INPUT_DIR):
+    path_names.append(os.path.join(INPUT_DIR, path))
+
+
+
+
+
+all_data = {}
+for num, path in enumerate(path_names):
+    all_data[f"file{num}"] = read_csv(path)
+
